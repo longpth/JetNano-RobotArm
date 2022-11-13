@@ -1,0 +1,331 @@
+[
+    {
+        "id": "82cfe1bd92d27a0a",
+        "type": "websocket out",
+        "z": "0139d91e8a56a8ca",
+        "name": "",
+        "server": "",
+        "client": "245283047852f858",
+        "x": 1130,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "04b400178eedeaa3",
+        "type": "debug",
+        "z": "0139d91e8a56a8ca",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "9997ed30f15d6300",
+        "type": "join",
+        "z": "0139d91e8a56a8ca",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "",
+        "propertyType": "full",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "4",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 730,
+        "y": 300,
+        "wires": [
+            [
+                "43da017eab1ef24a"
+            ]
+        ]
+    },
+    {
+        "id": "1e9082eaaec69bfa",
+        "type": "ui_slider",
+        "z": "0139d91e8a56a8ca",
+        "name": "slider1",
+        "label": "Motor 1",
+        "tooltip": "",
+        "group": "5d6da38035078d97",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "Motor1",
+        "topicType": "str",
+        "min": 0,
+        "max": "90",
+        "step": "5",
+        "className": "",
+        "x": 450,
+        "y": 140,
+        "wires": [
+            [
+                "9997ed30f15d6300"
+            ]
+        ]
+    },
+    {
+        "id": "6932168a57160cfc",
+        "type": "ui_slider",
+        "z": "0139d91e8a56a8ca",
+        "name": "slider2",
+        "label": "Motor 2",
+        "tooltip": "",
+        "group": "5d6da38035078d97",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "Motor2",
+        "topicType": "str",
+        "min": 0,
+        "max": "90",
+        "step": "5",
+        "className": "",
+        "x": 450,
+        "y": 220,
+        "wires": [
+            [
+                "9997ed30f15d6300"
+            ]
+        ]
+    },
+    {
+        "id": "85b65b38ddf2423c",
+        "type": "function",
+        "z": "0139d91e8a56a8ca",
+        "name": "reset_motor1",
+        "func": "var newMsg\nif (msg.payload == true)\n{\n    newMsg = {topic: 'Motor1', payload: 45}\n\n    return newMsg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 80,
+        "wires": [
+            [
+                "1e9082eaaec69bfa",
+                "9997ed30f15d6300"
+            ]
+        ]
+    },
+    {
+        "id": "f81b20af0f717b66",
+        "type": "function",
+        "z": "0139d91e8a56a8ca",
+        "name": "reset_motor2",
+        "func": "var newMsg\nif (msg.payload == true)\n{\n    newMsg = {topic: 'Motor2', payload: 45}\n\n    return newMsg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 300,
+        "wires": [
+            [
+                "6932168a57160cfc",
+                "9997ed30f15d6300"
+            ]
+        ]
+    },
+    {
+        "id": "d0e1109806202775",
+        "type": "ui_slider",
+        "z": "0139d91e8a56a8ca",
+        "name": "slider3",
+        "label": "Motor 3",
+        "tooltip": "",
+        "group": "5d6da38035078d97",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "Motor3",
+        "topicType": "str",
+        "min": 0,
+        "max": "90",
+        "step": "5",
+        "className": "",
+        "x": 450,
+        "y": 420,
+        "wires": [
+            [
+                "9997ed30f15d6300"
+            ]
+        ]
+    },
+    {
+        "id": "f7f73e9fda1c199b",
+        "type": "ui_slider",
+        "z": "0139d91e8a56a8ca",
+        "name": "slider4",
+        "label": "Motor 4",
+        "tooltip": "",
+        "group": "5d6da38035078d97",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "Motor4",
+        "topicType": "str",
+        "min": 0,
+        "max": "90",
+        "step": "5",
+        "className": "",
+        "x": 450,
+        "y": 500,
+        "wires": [
+            [
+                "9997ed30f15d6300"
+            ]
+        ]
+    },
+    {
+        "id": "6ef3bd9414a9fad9",
+        "type": "function",
+        "z": "0139d91e8a56a8ca",
+        "name": "reset_motor3",
+        "func": "var newMsg\nif (msg.payload == true)\n{\n    newMsg = {topic: 'Motor3', payload: 45}\n\n    return newMsg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 360,
+        "wires": [
+            [
+                "d0e1109806202775",
+                "9997ed30f15d6300"
+            ]
+        ]
+    },
+    {
+        "id": "d42ee77927729d47",
+        "type": "function",
+        "z": "0139d91e8a56a8ca",
+        "name": "reset_motor4",
+        "func": "var newMsg\nif (msg.payload == true)\n{\n    newMsg = {topic: 'Motor4', payload: 45}\n\n    return newMsg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 580,
+        "wires": [
+            [
+                "f7f73e9fda1c199b",
+                "9997ed30f15d6300"
+            ]
+        ]
+    },
+    {
+        "id": "41baf0355d2b327e",
+        "type": "ui_switch",
+        "z": "0139d91e8a56a8ca",
+        "name": "",
+        "label": "switch",
+        "tooltip": "",
+        "group": "5d6da38035078d97",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 110,
+        "y": 320,
+        "wires": [
+            [
+                "85b65b38ddf2423c",
+                "f81b20af0f717b66",
+                "6ef3bd9414a9fad9",
+                "d42ee77927729d47"
+            ]
+        ]
+    },
+    {
+        "id": "43da017eab1ef24a",
+        "type": "function",
+        "z": "0139d91e8a56a8ca",
+        "name": "motor_control",
+        "func": "var msgContent =    'servo,'+\n    msg.payload.Motor1.payload.toString()+','+\n    msg.payload.Motor2.payload.toString()+','+\n    msg.payload.Motor3.payload.toString()+','+\n    msg.payload.Motor4.payload.toString()\nvar newMsg = { payload: msgContent}\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 300,
+        "wires": [
+            [
+                "82cfe1bd92d27a0a",
+                "04b400178eedeaa3"
+            ]
+        ]
+    },
+    {
+        "id": "245283047852f858",
+        "type": "websocket-client",
+        "path": "ws://localhost:1080/",
+        "tls": "",
+        "wholemsg": "false",
+        "hb": "0",
+        "subprotocol": ""
+    },
+    {
+        "id": "5d6da38035078d97",
+        "type": "ui_group",
+        "name": "Motors",
+        "tab": "6fa2efac854e1ed0",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6fa2efac854e1ed0",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
